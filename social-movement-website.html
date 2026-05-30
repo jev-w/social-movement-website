@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Youth Left Behind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+ 
+  <style>
+    :root {
+      --navy: #1c2e4a;
+      --teal: #2d8b82;
+      --amber: #e09b1a;
+      --bg: #f7f5f1;
+      --white: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --border: #ddd;
+    }
+ 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+ 
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+ 
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+ 
+    .nav-brand span { color: var(--amber); }
+ 
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+ 
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+ 
+    .nav-links a:hover { color: #fff; }
+ 
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: 70px 6% 60px;
+    }
+ 
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+ 
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      max-width: 620px;
+    }
+ 
+    .hero-slogan {
+      font-size: 0.9rem;
+      color: var(--amber);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+ 
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      margin-bottom: 30px;
+    }
+ 
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 10px;
+    }
+ 
+    .stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      color: var(--amber);
+      line-height: 1;
+    }
+ 
+    .stat span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+ 
+    /* SECTIONS */
+    section {
+      padding: 60px 6%;
+    }
+ 
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+ 
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--navy);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+ 
+    .intro-text {
+      font-size: 1rem;
+      color: #444;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+ 
+    /* ISSUE SECTION */
+    #issue { background: var(--white); }
+ 
+    .issue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+ 
+    .box {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 24px 26px;
+      border-left: 3px solid var(--teal);
+    }
+ 
+    .box.amber-border { border-left-color: var(--amber); }
+ 
+    .box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+ 
+    .box p {
+      font-size: 0.93rem;
+      color: #444;
+    }
+ 
+    .box ul {
+      margin-top: 10px;
+      padding-left: 18px;
+      font-size: 0.93rem;
+      color: #444;
+    }
+ 
+    .box ul li { margin-bottom: 4px; }
+ 
+    .full-width { grid-column: 1 / -1; }
+ 
+    /* STORY SECTION */
+    #story { background: var(--bg); }
+ 
+    .story-card {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 8px;
+      padding: 34px 36px;
+      max-width: 780px;
+    }
+ 
+    .story-card .story-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+ 
+    .story-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+ 
+    .story-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 12px;
+    }
+ 
+    .story-card p:last-child { margin-bottom: 0; }
+ 
+    .story-card .source {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 16px;
+      font-style: italic;
+    }
+ 
+    /* CTA SECTION */
+    #cta {
+      background: var(--teal);
+      color: #fff;
+      text-align: center;
+      padding: 60px 6%;
+    }
+ 
+    #cta h2 { color: #fff; margin-bottom: 12px; }
+ 
+    #cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+ 
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+ 
+    .btn {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+ 
+    .btn:hover { opacity: 0.88; }
+ 
+    .btn-white  { background: #fff; color: var(--navy); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.6); color: #fff; }
+ 
+    /* FOOTER */
+    footer {
+      background: #111c2e;
+      color: rgba(255,255,255,0.5);
+      padding: 22px 6%;
+      font-size: 0.83rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+ 
+    footer strong { color: rgba(255,255,255,0.75); }
+ 
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .issue-grid { grid-template-columns: 1fr; }
+      .full-width  { grid-column: 1; }
+      .hero-stats  { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">No <span>Youth</span> Left Behind</div>
+    <ul class="nav-links">
+      <li><a href="#issue">The Issue</a></li>
+      <li><a href="#story">Julie's Story</a></li>
+      <li><a href="#cta">Get Involved</a></li>
+    </ul>
+  </nav>
+ 
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-label">Ontario Social Movement — CHV2O Unit 5</div>
+    <h1>No Youth Left Behind</h1>
+    <p class="hero-slogan">Safe Homes · Safe Youth · Safe Futures</p>
+    <p>
+      Over 20,000 young people in Ontario are homeless right now. Most of them you'd
+      never notice — sleeping on a friend's couch, living out of a car, or moving between
+      unstable situations. This website is about them.
+    </p>
+ 
+    <div class="hero-stats">
+      <div class="stat">
+        <strong>85,000+</strong>
+        <span>Ontarians homeless in 2025</span>
+      </div>
+      <div class="stat">
+        <strong>20,000</strong>
+        <span>are children &amp; youth</span>
+      </div>
+      <div class="stat">
+        <strong>+50%</strong>
+        <span>increase since 2021</span>
+      </div>
+      <div class="stat">
+        <strong>1 in 200</strong>
+        <span>Ontarians are homeless</span>
+      </div>
+    </div>
+  </header>
+ 
+  <!-- THE ISSUE -->
+  <section id="issue">
+    <div class="section-label">The Issue</div>
+    <h2>What Is Youth Homelessness?</h2>
+    <p class="intro-text">
+      Youth homelessness in Ontario affects people aged 13 to 24. It's often invisible —
+      which is exactly why it doesn't get enough attention.
+    </p>
+ 
+    <div class="issue-grid">
+ 
+      <div class="box">
+        <h3>Why It's Hard to See</h3>
+        <p>
+          Most people picture homelessness as someone sleeping outside, but a lot of homeless
+          youth never end up on the street. They couch surf, sleep in cars, or stay in unsafe
+          situations just to avoid shelters. Because it's hidden, people assume it's not a
+          serious problem.
+        </p>
+      </div>
+ 
+      <div class="box amber-border">
+        <h3>Who's Most Affected</h3>
+        <ul>
+          <li>Youth aging out of the foster care system</li>
+          <li>LGBTQ+ youth kicked out of home</li>
+          <li>Newcomers and refugees</li>
+          <li>Youth with mental health challenges</li>
+          <li>Low-income families in housing crisis</li>
+        </ul>
+      </div>
+ 
+      <div class="box full-width">
+        <h3>Why We Need to Talk About This</h3>
+        <p>
+          When a young person doesn't have stable housing, everything else falls apart too —
+          school, jobs, mental health. The problem is also preventable. Ontario spends money
+          responding to youth homelessness after the fact instead of stopping it from happening
+          in the first place. More support for youth before they hit a crisis point would go a
+          long way.
+        </p>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- JULIE'S STORY -->
+  <section id="story">
+    <div class="section-label">A Real Example</div>
+    <h2>Julie's Story</h2>
+    <p class="intro-text">
+      This is one story that shows what youth homelessness actually looks like.
+    </p>
+ 
+    <div class="story-card">
+      <div class="story-tag">Case Study — United Way Eastern Ontario</div>
+      <h3>How the System Failed Julie</h3>
+      <p>
+        Julie grew up dealing with an unstable home life and was eventually placed in a group
+        home through the foster care system. When she aged out of care, the support disappeared
+        overnight. There was no plan, no transition help, just nothing.
+      </p>
+      <p>
+        She ended up couch surfing — constantly moving between friends and people she barely
+        knew. Most of those situations were unsafe or emotionally abusive. Eventually she had
+        no choice but to turn to shelters, all while dealing with anxiety, depression, and
+        substance use on her own.
+      </p>
+      <p>
+        Julie's situation isn't rare. A lot of youth who grow up in the foster care system
+        end up homeless not because of anything they did wrong, but because there's no real
+        plan to support them when they turn 18. That's a gap our movement is focused on
+        closing.
+      </p>
+      <p class="source">
+        Source: United Way Eastern Ontario — "Help Youth Like Julie Get Off Ottawa's Streets"
+      </p>
+    </div>
+  </section>
+ 
+  <!-- CTA -->
+  <section id="cta">
+    <div class="section-label" style="color: rgba(255,255,255,0.6);">Take Action</div>
+    <h2>You Can Help</h2>
+    <p>
+      You don't have to be a politician or a professional to make a difference.
+      Sharing this, signing a petition, or writing to your MPP all add up.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-white">Sign the Petition</a>
+      <a href="#" class="btn btn-outline">Contact Your MPP</a>
+    </div>
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <span><strong>No Youth Left Behind</strong> — Safe Homes · Safe Youth · Safe Futures</span>
+    <span>CHV2O Unit 5 Culminating Project · June 2025</span>
+  </footer>
+ 
+</body>
+</html>
+ 
